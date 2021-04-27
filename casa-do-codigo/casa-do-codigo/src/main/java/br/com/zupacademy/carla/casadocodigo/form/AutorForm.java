@@ -1,5 +1,7 @@
 package br.com.zupacademy.carla.casadocodigo.form;
 
+import javax.persistence.Column;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -9,7 +11,7 @@ import br.com.zupacademy.carla.casadocodigo.repository.AutorRepository;
 public class AutorForm {
 
 	@NotNull
-	//@Email(message = "Email precisa ser valido")
+	@Email(message = "Email precisa ser valido")
 	private String email;
 
 	@NotNull
@@ -19,7 +21,7 @@ public class AutorForm {
 	@NotNull
 	private String nome;
 
-	public AutorForm(String descricao, String email, String nome) {
+	public AutorForm(String email, String descricao, String nome) {
 		this.descricao = descricao;
 		this.email = email;
 		this.nome = nome;
@@ -35,7 +37,7 @@ public class AutorForm {
 
 	public Autor converter(AutorRepository repository) {
 
-		Autor autor = new Autor(descricao, email, nome);
+		Autor autor = new Autor(email, descricao, nome);
 		return autor;
 	}
 
