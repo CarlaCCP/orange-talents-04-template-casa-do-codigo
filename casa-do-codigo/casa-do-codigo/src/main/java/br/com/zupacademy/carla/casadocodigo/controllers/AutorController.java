@@ -1,6 +1,6 @@
 package br.com.zupacademy.carla.casadocodigo.controllers;
 
-import java.net.URI; 
+import java.net.URI;  
 
 import javax.validation.Valid;
 
@@ -30,7 +30,7 @@ public class AutorController {
 	@Autowired
 	private ProibeEmailDuplicadoAutorValidator proibeEmailDuplicadoAutorValidator;
 	
-	@InitBinder
+	//@InitBinder
 	public void init(WebDataBinder binder) {
 		
 		binder.addValidators(proibeEmailDuplicadoAutorValidator);

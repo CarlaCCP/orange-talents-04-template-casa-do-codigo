@@ -1,8 +1,7 @@
 package br.com.zupacademy.carla.casadocodigo.modelo;
 
-import java.time.LocalDateTime;
+import java.time.LocalDateTime; 
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +9,8 @@ import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import br.com.zupacademy.carla.casadocodigo.anotacao.UniqueValue;
 
 @Entity
 public class Autor {
@@ -22,6 +23,7 @@ public class Autor {
 	private LocalDateTime instante = LocalDateTime.now();
 	@NotNull
 	@Email(message= "Email precisa ser valido")
+	@UniqueValue(domainClass = Autor.class, fieldName="email")
 	private String email;
 	@NotNull
 	@Size(max=400)

@@ -1,6 +1,6 @@
 package br.com.zupacademy.carla.casadocodigo.controllers;
 
-import javax.validation.Valid;
+import javax.validation.Valid; 
 import java.net.URI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,9 +28,10 @@ public class CategoriaController {
 	@Autowired
 	private ProibeNomeDuplicadoValidator proibeNomeDuplicado; 
 	
-	@InitBinder
+	// adiciona um validator, sem perder os que já são gerados pelo spring
+	//@InitBinder
 	public void init(WebDataBinder binder) {
-		binder.addValidators(proibeNomeDuplicado);
+		binder.addValidators(proibeNomeDuplicado); 
 	}
 	
 	@PostMapping

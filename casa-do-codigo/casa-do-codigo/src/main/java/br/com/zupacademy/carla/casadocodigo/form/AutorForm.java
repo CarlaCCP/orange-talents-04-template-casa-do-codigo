@@ -1,10 +1,10 @@
 package br.com.zupacademy.carla.casadocodigo.form;
 
-import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import br.com.zupacademy.carla.casadocodigo.anotacao.UniqueValue;
 import br.com.zupacademy.carla.casadocodigo.modelo.Autor;
 import br.com.zupacademy.carla.casadocodigo.repository.AutorRepository;
 
@@ -12,6 +12,7 @@ public class AutorForm {
 
 	@NotNull
 	@Email(message = "Email precisa ser valido")
+	@UniqueValue(domainClass = Autor.class, fieldName="email")
 	private String email;
 
 	@NotNull
