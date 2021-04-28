@@ -23,7 +23,7 @@ public class Autor {
 	private LocalDateTime instante = LocalDateTime.now();
 	@NotNull
 	@Email(message= "Email precisa ser valido")
-	@UniqueValue(domainClass = Autor.class, fieldName="email")
+	//@UniqueValue(domainClass = Autor.class, fieldName="email")
 	private String email;
 	@NotNull
 	@Size(max=400)
@@ -33,7 +33,7 @@ public class Autor {
 	private String nome; 
 	
 	
-	public Autor (String email, String descricao, String nome) {
+	public Autor ( String email, String descricao, String nome) {
 	
 		this.email = email;
 		this.descricao = descricao;

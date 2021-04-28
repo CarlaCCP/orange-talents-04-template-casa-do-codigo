@@ -10,7 +10,7 @@ import br.com.zupacademy.carla.casadocodigo.repository.CategoriaRepository;
 public class CategoriaForm {
 
 	@NotNull
-	@UniqueValue(domainClass = Categoria.class, fieldName="nome")
+	//@UniqueValue(domainClass = Categoria.class, fieldName="nome")
 	private String nome;
 	
 	public CategoriaForm() {

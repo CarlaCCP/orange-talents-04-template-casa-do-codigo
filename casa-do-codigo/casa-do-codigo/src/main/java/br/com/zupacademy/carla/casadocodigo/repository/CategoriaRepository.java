@@ -9,4 +9,6 @@ import br.com.zupacademy.carla.casadocodigo.modelo.Categoria;
 public interface CategoriaRepository extends JpaRepository <Categoria, Long> {
 
 	Optional <Categoria> findByNome(String nome);
+
+
 }

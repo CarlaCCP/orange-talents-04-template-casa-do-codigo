@@ -1,14 +1,16 @@
 package br.com.zupacademy.carla.casadocodigo.controllers;
 
-import java.net.URI;  
+import java.net.URI; 
+import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.Validator;
+
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import br.com.zupacademy.carla.casadocodigo.dto.AutorDTO;
 import br.com.zupacademy.carla.casadocodigo.form.AutorForm;
 import br.com.zupacademy.carla.casadocodigo.modelo.Autor;
+
 import br.com.zupacademy.carla.casadocodigo.repository.AutorRepository;
 
 @RestController
@@ -47,4 +50,11 @@ public class AutorController {
 		URI uri = uriBuilder.path("/topicos/{id}").buildAndExpand(autor.getId()).toUri();
 		return ResponseEntity.created(uri).body(new AutorDTO(autor));
 	}
+	
+	
+	@GetMapping
+	public ResponseEntity<List<Autor>> GetAll(){ 
+		return ResponseEntity.ok(autorRepository.findAll());
+	}
+	
 }

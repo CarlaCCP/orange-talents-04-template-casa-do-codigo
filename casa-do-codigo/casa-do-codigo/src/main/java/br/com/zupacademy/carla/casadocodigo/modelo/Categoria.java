@@ -18,16 +18,15 @@ public class Categoria {
 	private Long id;
 	
 	@NotNull
-	@UniqueValue(domainClass = Categoria.class, fieldName="nome")
+	//@UniqueValue(domainClass = Categoria.class, fieldName="nome")
 	private String nome;
 
-	@Deprecated
 	public Categoria () {
 		
 	}
 	
 	public Categoria (String nome) {
-
+	
 		this.nome = nome;
 	}
 

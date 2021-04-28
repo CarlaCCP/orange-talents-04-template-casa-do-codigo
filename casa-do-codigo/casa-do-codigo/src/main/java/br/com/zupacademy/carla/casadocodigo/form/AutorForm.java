@@ -10,9 +10,10 @@ import br.com.zupacademy.carla.casadocodigo.repository.AutorRepository;
 
 public class AutorForm {
 
+	
 	@NotNull
 	@Email(message = "Email precisa ser valido")
-	@UniqueValue(domainClass = Autor.class, fieldName="email")
+	//@UniqueValue(domainClass = Autor.class, fieldName="email")
 	private String email;
 
 	@NotNull
