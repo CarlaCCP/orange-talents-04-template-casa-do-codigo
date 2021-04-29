@@ -20,10 +20,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import br.com.zupacademy.carla.casadocodigo.dto.DetalhaLivro;
 import br.com.zupacademy.carla.casadocodigo.dto.ItemListaLivro;
 import br.com.zupacademy.carla.casadocodigo.dto.novoLivroDTO;
 import br.com.zupacademy.carla.casadocodigo.form.novoLivroForm;
 import br.com.zupacademy.carla.casadocodigo.modelo.novoLivro;
+import br.com.zupacademy.carla.casadocodigo.repository.AutorRepository;
 import br.com.zupacademy.carla.casadocodigo.repository.novoLivroRepository;
 
 @RestController
@@ -70,10 +72,10 @@ public class novoLivroController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<novoLivroDTO> listar(@PathVariable Long id) {
+	public ResponseEntity<DetalhaLivro> listar(@PathVariable Long id) {
 		Optional<novoLivro> livro = repository.findById(id);
 		if (livro.isPresent()) {
-			return ResponseEntity.ok(new novoLivroDTO(livro.get()));
+			return ResponseEntity.ok(new DetalhaLivro(livro.get()));
 		}
 
 		return ResponseEntity.notFound().build();
