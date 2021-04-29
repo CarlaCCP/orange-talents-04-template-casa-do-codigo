@@ -1,6 +1,6 @@
 package br.com.zupacademy.carla.casadocodigo.anotacao;
 
-import java.util.List; 
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,8 +10,7 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.util.Assert;
 
-
-public class UniqueValueValidator implements ConstraintValidator<UniqueValue, Object> {
+public class ExistsIdValidator implements ConstraintValidator<ExistsId, Long>{
 
 	private String domainAttribute;
 	private Class<?> klass;
@@ -19,19 +18,19 @@ public class UniqueValueValidator implements ConstraintValidator<UniqueValue, Ob
 	@PersistenceContext
 	private EntityManager manager;
 	
-	public void initialize(UniqueValue params) {
+	public void initialize(ExistsId params) {
 		domainAttribute = params.fieldName();
 		klass = params.domainClass();
 	}
 	
-	
-	@Override 
-	public boolean isValid(Object value, ConstraintValidatorContext context) {
-		Query query = manager.createQuery("select 1 from " + klass.getName()+ " where " + domainAttribute+ "= :value");
-		query.setParameter("value",value );
+	@Override
+	public boolean isValid(Long value, ConstraintValidatorContext context) {
+		Query query = manager.createQuery("select 1 from "+klass.getName()+" where "+domainAttribute+"=:value");
+		query.setParameter("value", value);	
 		List<?> list = query.getResultList();
-		Assert.state(list.size() <=1, "Foi encontrado mais de um " + klass + "com o atributo" + domainAttribute+ "="+ value);
-		return list.isEmpty();
+		Assert.isTrue(list.size() <=1, "aconteceu algo bizarro e você tem mais de um "+klass+" com o atributo "+domainAttribute+" com o valor = "+value);
+
+		return !list.isEmpty();
 	}
 
 }

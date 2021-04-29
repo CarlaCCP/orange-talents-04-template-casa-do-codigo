@@ -1,23 +1,22 @@
 package br.com.zupacademy.carla.casadocodigo.anotacao;
 
-import java.lang.annotation.Documented;
-
-import java.lang.annotation.Retention;
-
-import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Documented
-@Constraint(validatedBy = UniqueValueValidator.class)
+@Constraint(validatedBy = ExistsIdValidator.class)
 @Target({ FIELD })
 @Retention(RUNTIME)
+public @interface ExistsId {
 
-public @interface UniqueValue {
-
-	String message() default "Valor inválido";
+	String message() default "Este país não esta cadastrado no nosso banco de dados";
 
 	Class<?>[] groups() default {};
 
